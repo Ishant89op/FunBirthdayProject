@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Surprise! 🎉</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="img/logo.jpeg"/>
+</head>
+<body>
+    <div class="background">
+      <img src="img/back.jpeg" class="bg-image" alt="Background" />
+    
+      <audio autoplay loop id="backgroundMusic" loop autoplay>
+        <source src="audio/birthday-audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+
+    <div id="modal" class="modal">
+      <div id="modalContent" class="modal-content">
+        <div id="promptText" class="prompt-text">
+          Party de rhe ho na 😊??
+        </div>
+        <div class="button-container">
+          <button id="yesBtn" class="btn yes-btn">Yes</button>
+          <button id="noBtn" class="btn no-btn">No</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
