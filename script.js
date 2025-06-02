@@ -33,7 +33,7 @@ const treeData = {
                         no: {
                             data: "Toh fhir party pakki apni 🥹??",
                             yes: {
-                                data: "uWu, 🥰💞" // same as first.yes
+                                data: "uWu, 🥰💞"
                             }
                         }
                     }
@@ -59,52 +59,87 @@ const first = buildTree(treeData);
 let currentNode = first;
 let depth = 0;
 
+const modalContent = document.getElementById("modalContent");
 const promptText = document.getElementById("promptText");
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
+const partyBtn = document.getElementById("partyBtn");
+const modal = document.getElementById("modal");
+modal.style.display = "none";
 
 function updatePrompt() {
     if (currentNode) {
         promptText.textContent = currentNode.data;
-
+        
         if (currentNode.yes) {
             yesBtn.style.display = "flex";
         } else {
             yesBtn.style.display = "none";
         }
-
+        
         if (currentNode.no) {
             noBtn.style.display = "flex";
         } else {
             noBtn.style.display = "none";
         }
-
-        const modalContent = document.getElementById("modalContent");
-
+        
         const maxWidth = window.innerWidth * 0.6;
         const maxHeight = window.innerHeight * 0.6;
-
+        
         const baseWidth = 320;
         const baseHeight = 120;
         const width = Math.min(baseWidth + depth * 100, maxWidth);
         const height = Math.min(baseHeight + depth * 80, maxHeight);
-
+        
         modalContent.style.width = `${width}px`;
         modalContent.style.minHeight = `${height}px`;
-
+        
         const fontSize = Math.min(20 + depth * 4, 38);
         promptText.style.fontSize = `${fontSize}px`;
-
+        
         const buttonSize = Math.min(80 + depth * 10, 140);
         const buttonFontSize = Math.min(16 + depth * 2, 28);
-
+        
         yesBtn.style.width = `${buttonSize}px`;
         yesBtn.style.height = `${buttonSize}px`;
         yesBtn.style.fontSize = `${buttonFontSize}px`;
-
+        
         noBtn.style.width = `${buttonSize}px`;
         noBtn.style.height = `${buttonSize}px`;
         noBtn.style.fontSize = `${buttonFontSize}px`;
+        
+        modalContent.classList.remove("sparkle-blue", "sparkle-red", "sparkle-colorful");
+        modalContent.classList.add("sparkle");
+        
+        if (!currentNode.yes && !currentNode.no) {
+            modalContent.style.animationName = "sparkleColorful";
+        } else if (depth === 2 || depth === 5) {
+            modalContent.style.animationName = "sparkleRed";
+        } else {
+            modalContent.style.animationName = "sparkleBlue";
+        }
+        
+        if (depth === 5 && currentNode.data.includes("Jao mai baat")) {
+            noBtn.innerText = "NO!!!";
+        }
+        
+        if (depth === 6 && currentNode.data.includes("Toh fhir party pakki")) {
+            yesBtn.innerText = "YES!!!";
+        }
+        
+        const showParty = (
+            currentNode === first.yes ||
+            currentNode === first.no.no ||
+            currentNode === first.no.yes.yes ||
+            currentNode === first.no.yes.no.yes ||
+            currentNode === first.no.yes.no.no.yes ||
+            currentNode === first.no.yes.no.no.no.no.yes
+        );
+        if (showParty) {
+            partyBtn.style.display = "flex";
+        } else {
+            partyBtn.style.display = "none";
+        }
     }
 }
 
@@ -125,4 +160,23 @@ noBtn.addEventListener("click", () => {
         depth++;
         updatePrompt();
     }
+});
+
+partyBtn.addEventListener("click", () => {
+    document.getElementById("modal").style.display = "none";
+    document.getElementById("qrModal").style.display = "flex";
+});
+
+
+const playBtn = document.getElementById('audioBtn');
+const playBtnModal = document.getElementById('m');
+const audio = document.getElementById('aud');
+
+playBtn.addEventListener('click', () => {
+  audio.play().then(() => {
+    modal.style.display = "flex";
+    playBtnModal.style.display = "none";
+  }).catch(err => {
+    console.log("Audio play failed:", err);
+  });
 });

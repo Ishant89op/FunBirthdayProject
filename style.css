@@ -59,7 +59,7 @@ body, html {
     align-items: center;
 }
 
-.btn {
+.btn, .audioBtn{
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -94,6 +94,124 @@ body, html {
     box-shadow: 0 5px 15px rgba(244, 67, 54, 0.4);
 }
 
-.btn:active {
+.party-btn {
+    background: linear-gradient(135deg, #ff9800, #ff5722);
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.party-btn:hover {
+    transform: scale(1.1);
+}
+
+.btn:active, .audioBtn:active{
     transform: scale(0.95);
+}
+
+@keyframes sparkleBlue {
+    0%, 100% {
+    box-shadow: 0 0 10px 4px rgba(173, 216, 230, 0.7), 
+                0 0 20px 8px rgba(173, 216, 230, 0.5);
+    }
+    50% {
+    box-shadow: 0 0 15px 6px rgba(173, 216, 230, 1), 
+                0 0 30px 12px rgba(173, 216, 230, 0.7);
+    }
+}
+
+@keyframes sparkleRed {
+    0%, 100% {
+    box-shadow: 0 0 15px 6px rgba(255, 0, 0, 0.7), 
+                0 0 30px 12px rgba(255, 0, 0, 0.5);
+    }
+    50% {
+    box-shadow: 0 0 25px 10px rgba(255, 0, 0, 1), 
+                0 0 40px 16px rgba(255, 0, 0, 0.7);
+    }
+}
+
+@keyframes sparkleColorful {
+    0%, 100% {
+    box-shadow: 0 0 15px 6px #ff66cc, 
+                0 0 30px 12px #66ffcc,
+                0 0 45px 18px #ffcc66;
+    }
+    50% {
+    box-shadow: 0 0 25px 10px #ff3399, 
+                0 0 40px 16px #33ff99,
+                0 0 55px 24px #ff9933;
+    }
+}
+
+.sparkle {
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.qr-modal {
+    width: 70vw;
+    min-height: 60vh;
+    font-size: 34px;
+    background-color: #fff;
+    animation: sparkleColorful 2s infinite;
+}
+
+.qr-text {
+    font-weight: 600;
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #333;
+}
+
+.qr-img {
+    max-width: 50%;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+#qrModalContent {
+    width: 60%;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 20px;
+    background: white;
+}
+
+#m {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;  
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.box {
+    max-width: 300px;
+}
+
+.txt {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
 }

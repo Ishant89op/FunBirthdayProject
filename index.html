@@ -11,7 +11,7 @@
     <div class="background">
       <img src="img/back.jpeg" class="bg-image" alt="Background" />
     
-      <audio autoplay loop id="backgroundMusic" loop autoplay>
+      <audio autoplay loop id="aud">
         <source src="audio/birthday-audio.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
@@ -26,7 +26,26 @@
         <div class="button-container">
           <button id="yesBtn" class="btn yes-btn">Yes</button>
           <button id="noBtn" class="btn no-btn">No</button>
+          <button id="partyBtn" class="btn party-btn" style="display: none;">Party 🎉</button>
         </div>
+      </div>
+    </div>
+    
+    
+    <div id="qrModal" class="modal" style="display: none;">
+      <div id="qrModalContent" class="modal-content qr-modal">
+        <div class="prompt-text qr-text">
+          Hamare bich ki dooriyan iss party ko rok nhi payengi,<br />
+          ye rha mera QR, you can just send the money for the party...🤗
+        </div>
+        <img src="img/yes.png" alt="QR Code" class="qr-img">
+      </div>
+    </div>
+    
+    <div id="m">
+      <div class="box">
+        <p class="txt">Ready for the surprise? 🎵</p>
+        <button id="audioBtn" class="audioBtn">Play Audio</button>
       </div>
     </div>
 
